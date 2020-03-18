@@ -1,0 +1,38 @@
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  resources:
+    add-mappings: true #拒绝404界面给用户设置false # 设置为true时会最后匹配一次配置的静态资源地址是否存在，否则依旧会捕获
+  mvc:
+    throw-exception-if-no-handler-found: true #找不到conntroller抛出异常
+    static-path-pattern: /static/** #静态资源
+  #datasource:
+    #url: jdbc:mysql://192.168.139.208:33306/dianping?useUnicode=true&characterEncoding=utf-8
+    #username: root
+    #password: 123
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    #type: com.alibaba.druid.pool.DruidDataSource
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/dianping?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+#mybatis
+mybatis:
+  mapperLocations: classpath:mapping/*.xml
+  
+server:
+  port: 8010
+
+
+#后台admin登录官方用户名密码 123456
+admin:
+  email: admin@163.com
+  encryptPassword: 4QrcOUm6Wau+VuBX8g+IPg==
+
+#ES地址
+elasticsearch:
+  ip: 127.0.0.1:9200
