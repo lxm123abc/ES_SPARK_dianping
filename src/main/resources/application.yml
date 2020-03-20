@@ -9,7 +9,7 @@ spring:
     throw-exception-if-no-handler-found: true #找不到conntroller抛出异常
     static-path-pattern: /static/** #静态资源
   #datasource:
-    #url: jdbc:mysql://192.168.139.208:33306/dianping?useUnicode=true&characterEncoding=utf-8
+    #url: jdbc:mysql://127.0.0.1:3306/dianping?useUnicode=true&characterEncoding=utf-8
     #username: root
     #password: 123
     #driver-class-name: com.mysql.cj.jdbc.Driver

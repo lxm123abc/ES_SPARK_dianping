@@ -11,8 +11,8 @@
     </commentGenerator>
     <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                    connectionURL="jdbc:mysql://192.168.139.208:33306/dianping?useUnicode=true" userId="root"
-                    password="123">
+                    connectionURL="jdbc:mysql://127.0.0.1:3306/dianping?useUnicode=true" userId="root"
+                    password="123456">
     </jdbcConnection>
     <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
        NUMERIC 类型解析为java.math.BigDecimal -->
@@ -46,11 +46,11 @@
 
 
     <!-- 指定数据库表 -->
-    <table tableName="shop" domainObjectName="ShopModel"
+    <table tableName="recommend" domainObjectName="RecommendDO"
            enableCountByExample="false" enableDeleteByExample="false"
            enableSelectByExample="false" enableUpdateByExample="false"
            selectByPrimaryKeyQueryId="false">
-        <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
     </table>
 </context>
 </generatorConfiguration>

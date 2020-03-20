@@ -8,6 +8,8 @@ import com.zte.dianping.dao.ShopModelMapper;
 import com.zte.dianping.model.CategoryModel;
 import com.zte.dianping.model.SellerModel;
 import com.zte.dianping.model.ShopModel;
+import com.zte.dianping.recommend.RecommendService;
+import com.zte.dianping.recommend.RecommendSortService;
 import com.zte.dianping.service.CategoryService;
 import com.zte.dianping.service.SellerService;
 import com.zte.dianping.service.ShopService;
@@ -52,6 +54,10 @@ public class ShopServiceImpl implements ShopService {
     private SellerService sellerService;
     @Autowired
     private RestHighLevelClient restHighLevelClient;
+    @Autowired
+    private RecommendService recommendService;
+    @Autowired
+    private RecommendSortService recommendSortService;
 
     @Override
     @Transactional
@@ -104,7 +110,18 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public List<ShopModel> recommend(BigDecimal longitude, BigDecimal latitude) {
-        return shopModelMapper.recommend(longitude,latitude);
+        int userId = 148;//测试
+        List<Integer> shopIdList = recommendService.recall(userId);
+        shopIdList = recommendSortService.sort(shopIdList, userId);
+        List<ShopModel> shopModels = shopIdList.stream().map(id ->{
+            return get(id);
+        }).collect(Collectors.toList());
+        //List<ShopModel> shopModels = shopModelMapper.recommend(longitude, latitude);
+        /*shopModels.forEach(shopModel ->{
+            shopModel.setCategoryModel(categoryService.get(shopModel.getCategoryId()));
+            shopModel.setSellerModel(sellerService.get(shopModel.getSellerId()));
+        });*/
+        return shopModels;
     }
 
     @Override
