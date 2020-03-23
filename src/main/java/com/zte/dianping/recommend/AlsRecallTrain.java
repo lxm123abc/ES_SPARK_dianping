@@ -32,7 +32,7 @@ public class AlsRecallTrain implements Serializable {
 
         JavaRDD<Rating> rdd = javaRDD.map(new Function<String, Rating>() {
             @Override
-            public Rating call(String s) throws Exception {
+            public Rating call(String s) throws Exception {//行数据字符串
                 return Rating.parseRating(s);
             }
         });
